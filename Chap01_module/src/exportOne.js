@@ -4,3 +4,10 @@ const check = true;
 const arr = [10, 20];
 const user = { name: '흥부', age: 20 };
 const onAdd = (x, y) => `${x} + ${y} = ${x + y}`;
+
+if (true) {
+
+}
+else {
+
+}
