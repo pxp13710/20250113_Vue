@@ -2,16 +2,15 @@
 // const exteranl = 100;    // template에서 참조 불가능
 
 import A01Component from './components/A01Component.vue'
-
-// svg 파일 참조
-import logo from './assets/logo.svg'
+import Icon from './components/icons/IconCommunity.vue';
 
 // Vue Model
 export default {
   // 외부 View(컴포넌트)를 등록할 목적으로 사용. 
   // Vue는 Key를 사용자 정의 태그로 변환해 준다 
   components: {
-    A01Component: A01Component
+    A01Component: A01Component,
+    Icon,
   },
   // 1. 상태(state) 변수를 정의한다. 
   // 이 상태 변수가 변경되면 변경된 값 기반으로 화면을 즉각 재 구성한다
@@ -57,8 +56,10 @@ export default {
       
       <!-- vue가 관리하는 이미지 파일. hash 값이 붙는다. -->
       <img src="./assets/images/one.jpg" alt="one" />
-
-
+      
+      <!-- svg 파일은 img로 직접 참조와 Component로 작성해서 태그 형태로 사용 가능 -->
+      <img src="./assets/logo.svg" alt="svg" width="100" />
+      <Icon />
     </div>
   </div>
 </template>
