@@ -45,7 +45,7 @@
   View => Command Palette(ctrl + shift + p)
   => settings로 검색
   => User Settings(JSON) 선택
-
+ 
 
 6. 기본 shell 변경
   View -> Terminal
