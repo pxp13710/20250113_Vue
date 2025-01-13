@@ -1,8 +1,12 @@
 <script>
 // const exteranl = 100;    // template에서 참조 불가능
 
+// export default 내부에 components에 등록 후 사용해야 한다
 import A01Component from './components/A01Component.vue'
-import Icon from './components/icons/IconCommunity.vue';
+import A02Bind from './components/A02Binding.vue';
+
+import IconComm from './components/icons/IconCommunity.vue';
+
 
 // Vue Model
 export default {
@@ -10,7 +14,7 @@ export default {
   // Vue는 Key를 사용자 정의 태그로 변환해 준다 
   components: {
     A01Component: A01Component,
-    Icon,
+    IconComm, A02Bind
   },
   // 1. 상태(state) 변수를 정의한다. 
   // 이 상태 변수가 변경되면 변경된 값 기반으로 화면을 즉각 재 구성한다
@@ -39,6 +43,8 @@ export default {
   <div class="m-3">
     <h1 class="orange">{{ title }} / {{ count }}</h1>
 
+    <A02Bind></A02Bind>
+
     <!-- 외부 컴포넌트를 사용한다. 사용자 정의 태그는 반드시 종료태그가 있어야 한다.
       "v-"가 붙은 속성의 값은 변수명 또는 실질적인 JavaScript 표현식이다. 
     -->
@@ -59,7 +65,7 @@ export default {
       
       <!-- svg 파일은 img로 직접 참조와 Component로 작성해서 태그 형태로 사용 가능 -->
       <img src="./assets/logo.svg" alt="svg" width="100" />
-      <Icon />
+      <IconComm />
     </div>
   </div>
 </template>
@@ -70,54 +76,3 @@ export default {
     color: orange;
   }
 </style>
-
-<!-- 
-compostion API 기반
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
-<template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
-</template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style> 
--->
