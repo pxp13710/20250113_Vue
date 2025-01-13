@@ -66,7 +66,7 @@ Babel 작업 설정
 
 Webpack 설정
   1. 설치
-    npm i -D webpack webpack-cli
+    npm i -D webpack webpack-cli@5
 
   2. 설정 파일 작성
     npx webpack-cli init
