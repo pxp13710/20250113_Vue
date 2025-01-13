@@ -52,7 +52,7 @@ npm 명령 간략 설명
     npm i -g moduleName
       설치한 모듈을 OS 어느 경로에서든지 호출할 수 있다
 
-    ex] npm i -g create-react-app
+    ex] npm i -g serve
 
   9. 삭제
     npm un -g moduleName        npm uninstall -g moduleName
