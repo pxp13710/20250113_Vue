@@ -1,4 +1,7 @@
+<!-- eslint-disable no-unused-vars -->
 <script>
+const count = 10;
+
 export default {
   data() {
     return {
@@ -6,7 +9,8 @@ export default {
       age: 20,
       check: true,
       arr: [10, 11],
-      user: { name: 'A', age: 30 }
+      user: { name: 'A', age: 30 },
+      message: '<b>Good Morning</b>',
     }
   },
   // method에서 data의 값이나 다른 method를 참조하는 경우는 반드시 this를 사용해야 한다
@@ -20,6 +24,9 @@ export default {
       // console.log(this);       // undefined
       // return `${x} - ${this.age} = ${x - this.age}`
       return `${x} - ${y} = ${x - y}`
+    },
+    changeMessage() {
+      this.message = '<i><b>Good Afternoon</b></i>'
     }
   }
 };
@@ -61,18 +68,26 @@ export default {
 
   <div>
     <h5>3. 바인딩 관련 지시자</h5>
-    v-text: <span></span><br />
-    v-html: <span></span><br />
-    v-once: <span></span><br />
-    v-pre: <span></span><br />
+    <!-- v-로 시작하는 속성을 지시자라 한다. v-로 시작한 값 정의는 자바스크립트 표현식이다
+      즉 변수명 또는 실질적인 표현식의 값이 된다 
+    -->
+    바인딩: {{ message }}<br />
+    v-text: <span v-text="message"></span><br /> <!-- innerText -->
+    v-html: <span v-html="message"></span><br /> <!-- innerHTML -->
+    <!-- v-once: <span v-once>{{ message }}</span><br /> -->
+
+    <!-- {{ 가 바인딩의 표현식이 아닌 일반 문자로 취급 -->
+    v-pre: <span v-pre>{{ message }}</span><br />
     <br />
-    <button>Change</button>
-    <button>Change</button>
+    <button   v-on:click="changeMessage()">Change</button>
+    <button   @click="changeMessage">Change</button>
     <br />
   </div>
 
   <div class="mb-5">
-    Data에 존재하지 않는 변수: <br />
-    Data에 존재하지 않는 객체: <br />
+    <!-- Data에 존재하지 않는 변수: {{ num }}<br /> -->
+    <!-- Data에 존재하지 않는 객체: {{ obj?.name }}<br /> -->
+
+    <!-- export default 외부 변수: {{ count }}<br /> -->
   </div>
 </template>

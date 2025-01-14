@@ -4,9 +4,13 @@
 // export default 내부에 components에 등록 후 사용해야 한다
 import A01Component from './components/A01Component.vue'
 import A02Bind from './components/A02Binding.vue';
+import A03Attribute from './components/A03Attribute.vue';
+import A04MakeDOM from './components/A04MakeDOM.vue';
+import A05Method from './components/A05Method.vue';
+import A06Computed from './components/A06Computed.vue';
+import A07Watch from './components/A07Watch.vue';
 
 import IconComm from './components/icons/IconCommunity.vue';
-
 
 // Vue Model
 export default {
@@ -14,7 +18,9 @@ export default {
   // Vue는 Key를 사용자 정의 태그로 변환해 준다 
   components: {
     A01Component: A01Component,
-    IconComm, A02Bind
+    IconComm, A02Bind, A03Attribute, A04MakeDOM, A05Method, 
+    A06Computed, A07Watch, 
+
   },
   // 1. 상태(state) 변수를 정의한다. 
   // 이 상태 변수가 변경되면 변경된 값 기반으로 화면을 즉각 재 구성한다
@@ -43,6 +49,11 @@ export default {
   <div class="m-3">
     <h1 class="orange">{{ title }} / {{ count }}</h1>
 
+    <A07Watch></A07Watch>
+    <A06Computed></A06Computed>
+    <A05Method></A05Method>
+    <A04MakeDOM></A04MakeDOM>
+    <A03Attribute></A03Attribute>
     <A02Bind></A02Bind>
 
     <!-- 외부 컴포넌트를 사용한다. 사용자 정의 태그는 반드시 종료태그가 있어야 한다.

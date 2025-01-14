@@ -20,16 +20,45 @@ const data = {
     { no: 16, name: '서사모아', capital: '아피아', region: 'oceania' },
   ],
 };
-export default {};
+export default {
+  data() {
+    return {
+      countryname: data.countryname,
+      countries: data.countries,
+    }
+  },
+  computed: {
+    searchContry() {
+      const searchData = this.countries.filter((item) => {
+        if(item.name.includes(this.countryname)) return true;
+        else return false;
+      });
+      return searchData;
+    },
+  },
+  methods: {
+    // DOM이 생성되기 전 시점에 data와 methods가 생성된다. 이 시점에서는 DOM을 조작할 수 없다.
+    // searchContry() {
+    //   const searchData = this.countries.filter((item) => {
+    //     if(item.name.includes(this.countryname)) return true;
+    //     else return false;
+    //   });
+    //   return searchData;
+    // },
+    changeContryName() {
+      this.countryname = document.getElementById('search').value;
+    },
+  }
+};
 </script>
 
 <template>
   <h3>A06 Computed</h3>
 
   <div class="input-group">
-    <input type="text" name="search" class="form-control" />
+    <input type="text" name="search" id="search" class="form-control" />
     <div class="input-group-append">
-      <button class="btn btn-primary">SEARCH</button>
+      <button class="btn btn-primary" @click="changeContryName">SEARCH</button>
     </div>
   </div>
   <br />
@@ -44,11 +73,11 @@ export default {};
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+      <tr v-for="country in searchContry" :key="country.no">
+        <td>{{ country.no }}</td>
+        <td>{{ country.name }}</td>
+        <td>{{ country.capital }}</td>
+        <td>{{ country.region }}</td>
       </tr>
     </tbody>
   </table>
