@@ -24,13 +24,48 @@ export default {
     },
     y(newVal) {
       this.getTotal(newVal)
+    },
+    name(newVal) {
+      if(newVal.trim().length >= 2) {
+        this.searchContact(newVal);
+      }
     }
   },
   methods: {
     getTotal(value) {
       this.total = Number(this.x) + value;
+    },
+    searchContact(keyword) {
+      // if(keyword.trim().length >= 2) {
+
+        this.isLoading = true;
+        fetch(baseURL + keyword)
+          // 성공하면 then이 정의한 함수가 실행
+          .then((resp) => {
+            // console.log(resp);
+            return resp.json();     // JSON 형식으로 변환(JavaScript Object로 변환)
+          })
+          // 위의 then이 리턴한 값을 처리할 함수를 정의
+          .then((data) => {
+            // console.log(data);
+            // this.isLoading = false;
+            this.contactList = data;
+          })
+          // 실패하면 catch가 정의한 함수가 실행된다
+          .catch((error) => {
+            // this.isLoading = false;
+            console.error(error);
+          })
+          .finally(() => {
+            this.isLoading = false;
+          });
+      // }
     }
   },
+  // View가 완성된 시점에 실행되는 라이프사이클 메서드
+  mounted() {
+    // this.searchContact('ab');
+  }
 };
 </script>
 
@@ -54,15 +89,14 @@ export default {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+        <tr v-for="contact in contactList" :key="contact.no">
+          <td>{{ contact.no }}</td>
+          <td>{{ contact.name }}</td>
+          <td>{{ contact.tel }}</td>
+          <td>{{ contact.address }}</td>
         </tr>
       </tbody>
     </table>
-
-    <div>Loading....</div>
+    <div v-show="isLoading">Loading....</div>
   </div>
 </template>

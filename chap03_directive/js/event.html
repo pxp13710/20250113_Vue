@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <h1>JavaScript Event</h1>
+
+      <!-- inline Event -->
+      <button name="button 01" onclick="alert('Good Morning!!!')">Btn 01</button>
+      <button name="button 02" onclick="btn02Event()">Btn 02</button>
+      <button name="button 03" onclick="btn03Event(event)">Btn 03</button>
+      <button name="button 04" onclick="btn04Event(event, 'green')">Btn 04</button>
+
+      <button name="button 05" id="btn05">Btn 05</button>
+      <button name="button 06" id="btn06">Btn 06</button>
+      <button name="button 07" id="btn07">Btn 07</button>
+      <button name="button 08" id="btn08">Btn 08</button>
+    </div>
+
+    <script type="text/javascript">
+      const btn02Event = function () {
+        alert('Good Afternoon!!!')
+      }
+      const btn03Event = function (evt) {
+        // console.log(evt.target);
+        evt.target.style.backgroundColor = 'orange'
+      }
+      const btn04Event = function (evt, color) {
+        // console.log(evt.target);
+        evt.target.style.backgroundColor = color
+      }
+
+      // Event Listener
+      document.getElementById('btn05').addEventListener('click', function (evt) {
+        alert('Good Afternoon!!!')
+      })
+
+      // 호출하는 callback 함수에 event 객체만 알아서 전달한다. 두번째 매개변수는 없음 => undefined
+      const btn06Event = function () {
+        alert('Good Evening!!!')
+      }
+      document.getElementById('btn06').addEventListener('click', btn06Event)
+
+      const btn07Event = function (evt) {
+        evt.target.style.backgroundColor = 'orange'
+      }
+      document.getElementById('btn07').addEventListener('click', btn07Event)
+
+      const btn08Event = function (evt, color) {
+        console.log(evt, color)
+        evt.target.style.backgroundColor = color
+      }
+      document.getElementById('btn08').addEventListener('click', (evt) => btn08Event(evt, 'green'))
+    </script>
+  </body>
+</html>

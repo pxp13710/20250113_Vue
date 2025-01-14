@@ -9,6 +9,10 @@ import A04MakeDOM from './components/A04MakeDOM.vue';
 import A05Method from './components/A05Method.vue';
 import A06Computed from './components/A06Computed.vue';
 import A07Watch from './components/A07Watch.vue';
+import A08LifeCycle from './components/A08LifeCycle.vue';
+import A09Event from './components/A09Event.vue';
+import A10Form from './components/A10Form.vue';
+import A11Refs from './components/A11Refs.vue';
 
 import IconComm from './components/icons/IconCommunity.vue';
 
@@ -19,8 +23,8 @@ export default {
   components: {
     A01Component: A01Component,
     IconComm, A02Bind, A03Attribute, A04MakeDOM, A05Method, 
-    A06Computed, A07Watch, 
-
+    A06Computed, A07Watch, A08LifeCycle, A09Event, A10Form, 
+    A11Refs,
   },
   // 1. 상태(state) 변수를 정의한다. 
   // 이 상태 변수가 변경되면 변경된 값 기반으로 화면을 즉각 재 구성한다
@@ -49,6 +53,10 @@ export default {
   <div class="m-3">
     <h1 class="orange">{{ title }} / {{ count }}</h1>
 
+    <A11Refs></A11Refs>
+    <A10Form></A10Form>
+    <A09Event></A09Event>
+    <A08LifeCycle></A08LifeCycle>
     <A07Watch></A07Watch>
     <A06Computed></A06Computed>
     <A05Method></A05Method>

@@ -46,7 +46,8 @@ export default {
     //   return searchData;
     // },
     changeContryName() {
-      this.countryname = document.getElementById('search').value;
+      // this.countryname = document.getElementById('search').value;
+      this.countryname = this.$refs.searchRef.value;
     },
   }
 };
@@ -56,7 +57,7 @@ export default {
   <h3>A06 Computed</h3>
 
   <div class="input-group">
-    <input type="text" name="search" id="search" class="form-control" />
+    <input type="text" name="search" id="search" class="form-control" ref="searchRef" />
     <div class="input-group-append">
       <button class="btn btn-primary" @click="changeContryName">SEARCH</button>
     </div>
