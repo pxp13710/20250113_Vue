@@ -1,8 +1,8 @@
 <script>
-import A05TodoItem from './A05TodoItem.vue';
+import A05TodoItem from './TodoItem.vue';
 
 export default {
-  props: ['todoList', 'updateTodo', 'deleteTodo'],
+  inject: ['todoList'],
   components: { A05TodoItem }
 };
 </script>
@@ -19,7 +19,7 @@ export default {
     </thead>
     <tbody>
       <template v-for="todo in todoList" :key="todo.id">
-        <A05TodoItem :todo="todo" :updateTodo="updateTodo" :deleteTodo="deleteTodo"/>
+        <A05TodoItem :todo="todo"/>
       </template>
     </tbody>
   </table>

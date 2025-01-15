@@ -1,6 +1,6 @@
 <script>
 export default {
-  props: ['addTodo'],
+  inject: ['addTodo'],
   methods: {
     sendData() {
       // 비제어 컴포넌트

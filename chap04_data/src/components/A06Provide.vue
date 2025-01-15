@@ -1,4 +1,5 @@
 <script>
+import { computed } from 'vue';
 import A06Inject from './children/A06Inject.vue';
 
 export default {
@@ -18,6 +19,15 @@ export default {
       this.user.age = 100;
     },
   },
+  // Vue 3.X에서만 사용 가능
+  provide() {
+    return {
+      name: computed(() => this.name),
+      user: computed(() => this.user),
+      changeName: this.changeName,
+      changeUser: this.changeUser
+    }
+  }
 };
 </script>
 

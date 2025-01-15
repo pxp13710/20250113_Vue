@@ -1,6 +1,7 @@
 <script>
-import A05TodoForm from './children/A05TodoForm.vue';
-import A05TodoTable from './children/A05TodoTable.vue';
+import A05TodoForm from './TodoForm.vue';
+import A05TodoTable from './TodoTable.vue';
+import { computed } from 'vue';
 
 const todoList = [
   { id: 1, text: '첫 번째 할 일', done: true },
@@ -13,12 +14,10 @@ export default {
   data() {
     return {
       todoList,
-      // id: 4,
     };
   },
   methods: {
     addTodo(text) {
-      // const todo = { id: this.id++, text: text, done: false };
       const cnt = this.todoList.at(-1) ? this.todoList.at(-1).id + 1 : 1
       const todo = { id: cnt, text: text, done: false };
       this.todoList.push(todo);
@@ -31,6 +30,14 @@ export default {
       const idx = this.todoList.findIndex((todo) => todo.id === id);
       this.todoList.splice(idx, 1);
     },
+  },
+  provide() {
+    return {
+      todoList: computed(() => this.todoList),
+      updateTodo: this.updateTodo,
+      deleteTodo: this.deleteTodo,
+      addTodo: this.addTodo
+    }
   }
 };
 </script>
@@ -39,9 +46,7 @@ export default {
   <h3>A05 TodoList</h3>
 
   <div class="mb-5">
-    <A05TodoForm :addTodo="addTodo"></A05TodoForm>
-    <A05TodoTable 
-      :todoList="todoList" 
-      :updateTodo="updateTodo" :deleteTodo="deleteTodo"></A05TodoTable>
+    <A05TodoForm></A05TodoForm>
+    <A05TodoTable></A05TodoTable>
   </div>
 </template>

@@ -1,6 +1,6 @@
 <script>
 export default {
-  
+  props: ['contactList']
 };
 </script>
 
@@ -15,11 +15,11 @@ export default {
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+      <tr v-for="contact in contactList" :key="contact.no">
+        <td>{{ contact.no }}</td>
+        <td>{{ contact.name }}</td>
+        <td>{{ contact.tel }}</td>
+        <td>{{ contact.address }}</td>
       </tr>
     </tbody>
   </table>

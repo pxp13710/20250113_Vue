@@ -1,5 +1,6 @@
 <script>
 export default {
+  inject: ['name', 'user', 'changeName', 'changeUser'],
   data() {
     return {};
   },
@@ -10,10 +11,10 @@ export default {
   <h3>A06 Inject</h3>
 
   <div class="mb-5">
-    Name: <br />
-    User: <br />
+    Name: {{ name }}<br />
+    User: {{ user.name }} / {{ user.age }} / {{ user.address }}<br />
 
-    <button>Name</button>
-    <button>User</button><br />
+    <button @click="changeName">Name</button>
+    <button @click="changeUser">User</button><br />
   </div>
 </template>

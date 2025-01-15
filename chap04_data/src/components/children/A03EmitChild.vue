@@ -1,5 +1,7 @@
 <script>
 export default {
+  // custom event 등록
+  emits: ['numEvent', 'objEvent'],
   data() {
     return {
       num: 10,
@@ -21,7 +23,7 @@ export default {
         arr: this.arr,
         user: this.user,
       }
-      this.$emit('numEvent', sendData);
+      this.$emit('objEvent', sendData);
     }
   }
 };
