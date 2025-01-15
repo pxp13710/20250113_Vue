@@ -1,21 +1,21 @@
 <script>
-export default {
-  // 읽기 전용 값이다
-  props: ['title', 'num', "count"],
-  data() {
-    return {
-      cnt: 10,
-    }
-  },
-  methods: {
-    increment() {
-      this.cnt++
+  export default {
+    // 읽기 전용 값이다
+    props: ['title', 'num', 'count'],
+    data() {
+      return {
+        cnt: 10,
+      };
     },
-    decrement() {
-      this.cnt--
+    methods: {
+      increment() {
+        this.cnt++;
+      },
+      decrement() {
+        this.cnt--;
+      },
     },
-  }
-}
+  };
 </script>
 
 <template>
@@ -26,7 +26,5 @@ export default {
     <button @click="decrement">감소</button>
   </div>
 
-  <div class="mb-3">
-    This is A01Component {{ num < 10 ? '0' + num : num }}.
-  </div>
+  <div class="mb-3">This is A01Component {{ num < 10 ? '0' + num : num }}.</div>
 </template>

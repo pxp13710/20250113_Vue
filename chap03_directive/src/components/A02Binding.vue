@@ -1,35 +1,35 @@
 <!-- eslint-disable no-unused-vars -->
 <script>
-const count = 10;
+  const count = 10;
 
-export default {
-  data() {
-    return {
-      name: 'NolBu',
-      age: 20,
-      check: true,
-      arr: [10, 11],
-      user: { name: 'A', age: 30 },
-      message: '<b>Good Morning</b>',
-    }
-  },
-  // method에서 data의 값이나 다른 method를 참조하는 경우는 반드시 this를 사용해야 한다
-  methods: {
-    onAdd(x) {
-      // console.log(this);       // Vue Model
-      return `${x} + ${this.age} = ${x + this.age}`
+  export default {
+    data() {
+      return {
+        name: 'NolBu',
+        age: 20,
+        check: true,
+        arr: [10, 11],
+        user: { name: 'A', age: 30 },
+        message: '<b>Good Morning</b>',
+      };
     },
-    // this를 사용하지 않는다면 Arrow 함수도 사용 가능. this를 사용하면 에러 발생
-    onMin: (x, y) => {
-      // console.log(this);       // undefined
-      // return `${x} - ${this.age} = ${x - this.age}`
-      return `${x} - ${y} = ${x - y}`
+    // method에서 data의 값이나 다른 method를 참조하는 경우는 반드시 this를 사용해야 한다
+    methods: {
+      onAdd(x) {
+        // console.log(this);       // Vue Model
+        return `${x} + ${this.age} = ${x + this.age}`;
+      },
+      // this를 사용하지 않는다면 Arrow 함수도 사용 가능. this를 사용하면 에러 발생
+      onMin: (x, y) => {
+        // console.log(this);       // undefined
+        // return `${x} - ${this.age} = ${x - this.age}`
+        return `${x} - ${y} = ${x - y}`;
+      },
+      changeMessage() {
+        this.message = '<i><b>Good Afternoon</b></i>';
+      },
     },
-    changeMessage() {
-      this.message = '<i><b>Good Afternoon</b></i>'
-    }
-  }
-};
+  };
 </script>
 
 <template>
@@ -51,7 +51,6 @@ export default {
 
     함수의 리턴값: {{ onAdd(5) }}<br />
     함수의 리턴값: {{ onMin(5, 2) }}<br />
-    
   </div>
   <br />
 
@@ -72,15 +71,17 @@ export default {
       즉 변수명 또는 실질적인 표현식의 값이 된다 
     -->
     바인딩: {{ message }}<br />
-    v-text: <span v-text="message"></span><br /> <!-- innerText -->
-    v-html: <span v-html="message"></span><br /> <!-- innerHTML -->
+    v-text: <span v-text="message"></span><br />
+    <!-- innerText -->
+    v-html: <span v-html="message"></span><br />
+    <!-- innerHTML -->
     <!-- v-once: <span v-once>{{ message }}</span><br /> -->
 
     <!-- {{ 가 바인딩의 표현식이 아닌 일반 문자로 취급 -->
-    v-pre: <span v-pre>{{ message }}</span><br />
+    v-pre: <span v-pre>{{ message }}</span> <br />
     <br />
-    <button   v-on:click="changeMessage()">Change</button>
-    <button   @click="changeMessage">Change</button>
+    <button v-on:click="changeMessage()">Change</button>
+    <button @click="changeMessage">Change</button>
     <br />
   </div>
 

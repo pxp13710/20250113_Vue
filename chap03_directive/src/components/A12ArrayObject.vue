@@ -1,13 +1,37 @@
 <script>
-export default {
-  data() {
-    return {
-      names: ['NolBu', 'HungBu'],
-      user: { name: 'NolBu', age: 20 },
-    };
-  },
-  methods: {},
-};
+  export default {
+    data() {
+      return {
+        names: ['NolBu', 'HungBu'],
+        user: { name: 'NolBu', age: 20 },
+      };
+    },
+    methods: {
+      addArray() {
+        const random = Math.ceil(Math.random() * 100);
+        this.names.push(random);
+      },
+      updateArray(value) {
+        this.names[0] = value;
+      },
+      deleteArray(x) {
+        this.names.splice(x, 1);
+      },
+      addObject(key, value) {
+        this.user[key] = value;
+
+        // Vue 2.x
+        // const newUser = { ...this.user, [key]: value };
+        // this.user = newUser;
+      },
+      updateObject(key, value) {
+        this.user[key] = value;
+      },
+      deleteObject(key) {
+        delete this.user[key];
+      },
+    },
+  };
 </script>
 
 <template>
@@ -26,12 +50,12 @@ export default {
   </ul>
 
   <div class="mb-5">
-    <button>ADD Array</button>
-    <button>Change Array</button>
-    <button>Delete Array</button>
+    <button @click="addArray">ADD Array</button>
+    <button @click="() => updateArray(2000)">Change Array</button>
+    <button @click="() => deleteArray(1)">Delete Array</button>
 
-    <button>ADD Object</button>
-    <button>Change Object</button>
-    <button>Delete Object</button>
+    <button @click="() => addObject('address', 'Seoul')">ADD Object</button>
+    <button @click="() => updateObject('address', 'Busan')">Change Object</button>
+    <button @click="() => deleteObject('address')">Delete Object</button>
   </div>
 </template>
