@@ -1,11 +1,16 @@
 <script>
 import A03EmitChild from './children/A03EmitChild.vue';
+
 export default {
   components: { A03EmitChild },
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    getNumber(evt) {
+      console.log(evt);
+    }
+  },
 };
 </script>
 
@@ -23,6 +28,6 @@ export default {
   <hr />
 
   <div class="mb-5">
-    <A03EmitChild></A03EmitChild>
+    <A03EmitChild @numEvent="getNumber"></A03EmitChild>
   </div>
 </template>
