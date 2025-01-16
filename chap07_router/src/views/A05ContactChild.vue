@@ -2,13 +2,16 @@
 import contactlist from './data/ContactList';
 
 export default {
+  props: ['no'],
   data : function() {
     return {
       contacts : contactlist.contacts
     }
   },
   computed : {
-    
+    person() {
+      return this.contacts.find((item) => item.no === Number(this.no));
+    }
   }
 }
 </script>
@@ -21,19 +24,19 @@ export default {
         <tbody>
           <tr class="active">
             <td>일련번호</td>
-            <td></td>
+            <td>{{ person.no }}</td>
           </tr>
           <tr class="active">
             <td>이름</td>
-            <td></td>
+            <td>{{ person.name }}</td>
           </tr>
           <tr class="active">
             <td>전화</td>
-            <td></td>
+            <td>{{ person.tel }}</td>
           </tr>
           <tr class="active">
             <td>주소</td>
-            <td></td>
+            <td>{{ person.address }}</td>
           </tr>
         </tbody>
       </table>
