@@ -6,7 +6,7 @@ export default {
     }
   },
   mounted() {
-    throw new Error('Child에서 발생한 예외...')
+    throw new Error('Child에서 발생한 예외...');
   },
 }
 </script>

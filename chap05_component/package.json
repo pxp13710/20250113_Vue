@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "bootstrap": "^5.3.3",
+    "p-min-delay": "^4.0.2",
+    "portal-vue": "^3.0.0",
     "vue": "^3.5.13"
   },
   "devDependencies": {

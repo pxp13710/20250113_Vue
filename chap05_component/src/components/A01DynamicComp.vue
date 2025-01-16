@@ -14,6 +14,10 @@ export default {
 </script>
 
 <template>
+  <!-- A03Teleport의 popup이 표시될 위치 -->
+  <portal-target name="dest"></portal-target>
+
+
   <h3>A01 Dynamic Component</h3>
 
   <div class="mb-3">

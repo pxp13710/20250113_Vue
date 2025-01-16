@@ -8,6 +8,7 @@ export default {
       isChecked: false
     }
   },
+  // 경고에 관련된 처리는 모두 main.js에서 처리한다
 }
 </script>
 

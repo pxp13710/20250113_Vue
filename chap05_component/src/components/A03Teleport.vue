@@ -8,7 +8,7 @@ export default {
 
 
 <template>
-  <h3>A03 Teleport - Vue3</h3>
+  <h3>A03 Teleport - Vue3.X</h3>
 
   <p>
     Vue is a framework and ecosystem that covers most of the common features needed in frontend development.

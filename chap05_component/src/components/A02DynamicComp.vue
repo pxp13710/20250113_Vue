@@ -13,7 +13,7 @@ export default {
   },
   methods: {
     changeCurrent(name) {
-      this.current = name;
+      this.current = `A01Banner${name}`;
     }
   }
 }
@@ -23,13 +23,23 @@ export default {
   <div id="container">
     <h3>A02 Keep Alive</h3>
     <ul>
-      <li>
-        <a href="#"></a>
+      <li v-for="item in keys" :key="item">
+        <a href="#" @click="() => changeCurrent(item)">{{ item.toUpperCase() }}</a>
       </li>
     </ul>
 
     <div class="mb-5">
-      <component :is="current"></component>
+      <!-- 
+        KeepAlive는 동적으로 표시되는 컴포넌트를 캐시화 한다
+        include 명령을 통해 cache화 할 컴포넌트를 지정할 수 있다
+        exclude 명령을 통해 cache화에서 제외 할 컴포넌트를 지정할 수 있다
+        max cache화 할 컴포넌트의 개수를 지정
+
+        include, exclude는 컴포넌트 파일명이 아닌 name 속성값을 스페이스 없이 ,로 기술
+      -->
+      <KeepAlive include="homeComp,aboutComp" max="2">
+        <component :is="current"></component>
+      </KeepAlive>
     </div>
   </div>
 </template>
