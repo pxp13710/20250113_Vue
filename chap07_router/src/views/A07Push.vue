@@ -1,3 +1,4 @@
+<!-- eslint-disable no-unused-vars -->
 <script>
 export default {
   methods: {
@@ -19,6 +20,29 @@ export default {
   },
   created() {
     // console.log(this.$router);
+  },
+  // guard
+  beforeRouteEnter(to, from) {        // => composition API에서는 없음
+    console.log('------- beforeRouteEnter component guard -------');
+    // console.log(to);
+    const session = globalThis.sessionStorage;
+    if (session.getItem('address')) return true;
+    else return false;
+  },
+  // 진입 후 다른 view로 이동 안됨
+  beforeRouteLeave(to, from) { 
+    console.log('------- beforeRouteLeave component guard -------');
+    // console.log(to);
+    const session = globalThis.sessionStorage;
+    if (session.getItem('tel')) return true;
+    else return false;
+  },
+  beforeRouteUpdate(to, from) {
+    console.log('------- beforeRouteUpdate component guard -------');
+    // console.log(to);
+    const session = globalThis.sessionStorage;
+    if (session.getItem('address')) return true;
+    else return false;
   }
 }
 </script>

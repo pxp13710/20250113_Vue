@@ -39,7 +39,7 @@ export default {
       <RouterLink to="/A07Push">A07Push</RouterLink> |
 
       <RouterLink to="/A08Child">A08Child</RouterLink> |
-      <RouterLink to="/A08Child/info">A08 INFO</RouterLink> |
+      <RouterLink to="/A08Child/way">A08 WAY</RouterLink> |
 
       <RouterLink to="/ABC">ABC</RouterLink> |
     </div>
