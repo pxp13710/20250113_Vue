@@ -1,7 +1,21 @@
 <script>
 export default {
-  computed: { },
-  methods: { }
+  props: ['no'],
+  computed: {
+    contact() {
+      return this.$store.state.contactStore.contact
+    }
+  },
+  methods: {
+    updatePhoto() {
+      const file = this.$refs.photofile.files[0];
+      this.$store.dispatch('contactStore/updatePhotoAction', {no: this.no, file});
+      this.$router.push({name: 'list'});
+    }
+  },
+  created() {
+    this.$store.dispatch('contactStore/getContactAction', this.no)
+  }
 }
 </script>
 
@@ -14,8 +28,8 @@ export default {
 
       <form method="post" enctype="multipart/form-data">
         <div>
-          현재 사진:<br>
-          <img class="thumb" width="100"/>
+          현재 사진: {{ contact.photo }}<br>
+          <img :src="contact.photo" class="thumb" width="100"/>
         </div>
         <br>
 
@@ -25,8 +39,10 @@ export default {
         </div>
         <div>
           <div>&nbsp;</div>
-          <input type="button" class="btn btn-danger" value="변경">
-          <input type="button" class="btn btn-primary" value="취소">
+          <input type="button" class="btn btn-danger" value="변경"
+            @click="updatePhoto">
+          <input type="button" class="btn btn-primary" value="취소"
+            @click="() => $router.push({name: 'list'})">
         </div>
       </form>
     </div>
