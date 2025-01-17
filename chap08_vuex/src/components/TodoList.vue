@@ -1,6 +1,13 @@
 <script>
+import TodoListItem from './TodoListItem.vue';
+
 export default {
-  
+  components: { TodoListItem },
+  computed: {
+    todoList() {
+      return this.$store.state.todoStore.todoList;
+    }
+  }
 }
 </script>
 
@@ -16,7 +23,9 @@ export default {
         </tr>
       </thead>
       <tbody>
-        
+        <template v-for="todo in todoList" :key="todo.id">
+          <TodoListItem :todo="todo" />
+        </template>
       </tbody>
     </table>
   </div>

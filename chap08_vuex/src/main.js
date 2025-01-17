@@ -3,4 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { createApp } from 'vue'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+// store
+import store from './stores';
+
+const app = createApp(App);
+app.use(store);               // store 등록
+
+app.mount('#app')
